@@ -1,0 +1,9 @@
+# Python dependencies for SetHeader project
+# Install with: pip install -r requirements.txt
+
+# For parsing .gitignore files
+gitignore-parser>=0.1.0
+
+# For pre-commit framework
+pre-commit>=3.0.0
+

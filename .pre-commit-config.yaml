@@ -1,0 +1,27 @@
+# Pre-commit hooks configuration for SetHeader
+# Install with: pre-commit install
+# Update hooks: pre-commit autoupdate
+
+repos:
+  - repo: local
+    hooks:
+      - id: check-headers
+        name: Check file headers
+        entry: python scripts/pre-commit-hook.py
+        language: system
+        types: [file]
+        pass_filenames: false
+        always_run: false
+        description: "Check if staged files have required headers"
+        
+      # Optional: Auto-fix headers (uncomment to enable)
+      # - id: auto-fix-headers
+      #   name: Auto-fix missing headers
+      #   entry: python scripts/add-header.py
+      #   language: system
+      #   types: [file]
+      #   pass_filenames: true
+      #   args: []
+      #   description: "Automatically add headers to files missing them"
+      #   stages: [manual]  # Only run manually, not automatically
+

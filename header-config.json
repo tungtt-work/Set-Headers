@@ -1,0 +1,32 @@
+{
+  "customer": "OMINEXT",
+  "project_code": "TEST",
+  "copyright_year": "2025",
+  "hash_algorithm": "sha256",
+  "enabled_languages": [
+    "python", "bash", "ruby", "perl",
+    "javascript", "typescript",
+    "java", "c", "cpp", "csharp", "go",
+    "php", "html", "css", "xml"
+  ],
+  "file_extensions": {
+    "python": [".py"],
+    "bash": [".sh", ".bash"],
+    "ruby": [".rb"],
+    "perl": [".pl", ".pm"],
+    "javascript": [".js", ".jsx"],
+    "typescript": [".ts", ".tsx"],
+    "java": [".java"],
+    "c": [".c", ".h"],
+    "cpp": [".cpp", ".cc", ".cxx", ".hpp", ".h"],
+    "csharp": [".cs"],
+    "go": [".go"],
+    "php": [".php"],
+    "html": [".html", ".htm"],
+    "css": [".css"],
+    "xml": [".xml"]
+  },
+  "auto_fix": true,
+  "migrate_existing": false
+}
+

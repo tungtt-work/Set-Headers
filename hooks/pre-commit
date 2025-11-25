@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+#
+# Pre-commit hook to check file headers
+# This hook runs check-header.py on staged files
+#
+
+# Get the directory where this hook is located
+HOOK_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$HOOK_DIR/.." && pwd)"
+
+# Change to project root
+cd "$PROJECT_ROOT" || exit 1
+
+# Get staged files
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM)
+
+if [ -z "$STAGED_FILES" ]; then
+    exit 0
+fi
+
+# Filter only supported code files
+SUPPORTED_FILES=""
+for file in $STAGED_FILES; do
+    # Check if file exists and is a code file
+    if [ -f "$file" ]; then
+        ext="${file##*.}"
+        case "$ext" in
+            py|js|jsx|ts|tsx|java|c|h|cpp|cc|cxx|hpp|cs|go|php|html|htm|css|xml|sh|bash|rb|pl|pm)
+                SUPPORTED_FILES="$SUPPORTED_FILES $file"
+                ;;
+        esac
+    fi
+done
+
+if [ -z "$SUPPORTED_FILES" ]; then
+    exit 0
+fi
+
+# Run check-header.py on staged files
+python scripts/check-header.py $SUPPORTED_FILES
+
+EXIT_CODE=$?
+
+if [ $EXIT_CODE -ne 0 ]; then
+    echo ""
+    echo "❌ Some files are missing required headers!"
+    echo ""
+    echo "To fix automatically, run:"
+    echo "  python scripts/add-header.py <file>"
+    echo ""
+    echo "Or to migrate all files:"
+    echo "  python scripts/migrate-headers.py"
+    echo ""
+    exit 1
+fi
+
+exit 0
+

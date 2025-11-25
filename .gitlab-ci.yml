@@ -1,0 +1,58 @@
+# GitLab CI/CD Pipeline for SetHeader
+# This pipeline checks if code files have required headers
+
+stages:
+  - validate
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  paths:
+    - .cache/pip
+
+# Job to check file headers
+check_headers:
+  stage: validate
+  image: python:3.9
+  before_script:
+    - python --version
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+  script:
+    - echo "Checking file headers..."
+    - echo "=========================================="
+    - python scripts/check-header.py .
+    - echo "=========================================="
+    - echo "Header check completed successfully!"
+  only:
+    - merge_requests
+    - main
+    - master
+    - develop
+  allow_failure: false
+  tags:
+    - docker
+
+# Optional: Job to check headers on all branches (for testing)
+check_headers_all:
+  stage: validate
+  image: python:3.9
+  before_script:
+    - python --version
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+  script:
+    - echo "Checking file headers on all files..."
+    - python scripts/check-header.py .
+  only:
+    - branches
+  except:
+    - main
+    - master
+    - develop
+  allow_failure: true
+  tags:
+    - docker
+  when: manual
+
