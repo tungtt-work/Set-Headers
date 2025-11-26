@@ -48,6 +48,9 @@ Thumbs.db
 hooks/*.sh
 hooks/*.ps1
 
+# Header check flag (optional - mỗi dev tự quyết định)
+# .header-check-enabled
+
 # Test files (optional - uncomment if needed)
 # tests/
 # *.test.py

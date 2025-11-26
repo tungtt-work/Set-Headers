@@ -73,8 +73,37 @@ def filter_supported_files(file_paths):
         return [f for f in file_paths if f.suffix.lower() in common_extensions]
 
 
+def is_header_check_enabled():
+    """Check if header check is enabled."""
+    git_root = Path(__file__).parent.parent
+    
+    # Check for flag file
+    flag_file = git_root / ".header-check-enabled"
+    if flag_file.exists():
+        return True
+    
+    # Check git config
+    try:
+        result = subprocess.run(
+            ["git", "config", "--get", "header-check.enabled"],
+            capture_output=True,
+            text=True
+        )
+        if result.returncode == 0:
+            return result.stdout.strip().lower() == "true"
+    except Exception:
+        pass
+    
+    return False  # Default: disabled
+
+
 def main():
     """Main entry point for pre-commit hook."""
+    # Check if header check is enabled
+    if not is_header_check_enabled():
+        # Header check is disabled, skip
+        sys.exit(0)
+    
     # Get staged files
     staged_files = get_staged_files()
     
