@@ -10,6 +10,8 @@ GitLab CI/CD pipeline sẽ tự động kiểm tra headers cho tất cả code f
 
 Nếu có file thiếu header, pipeline sẽ fail và không thể merge.
 
+**⚠️ QUAN TRỌNG**: Để chặn merge khi pipeline fail, cần cấu hình GitLab Project Settings. Xem [GITLAB_MERGE_BLOCK_SETUP.md](GITLAB_MERGE_BLOCK_SETUP.md) để biết chi tiết.
+
 ## Cấu hình
 
 ### File `.gitlab-ci.yml`

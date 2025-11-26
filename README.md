@@ -98,7 +98,8 @@ Tổng cộng: **15 ngôn ngữ**
 
 ### 3. CI/CD
 - **GitLab CI/CD**: Tự động check headers trên merge requests
-- **Block merge**: Không thể merge nếu thiếu header
+- **GitHub Actions**: Tự động check headers trên pull requests
+- **Block merge**: Không thể merge nếu thiếu header (với cấu hình đúng)
 
 ### 4. IDE Integration
 - **VS Code**: Snippets và settings
@@ -109,7 +110,10 @@ Tổng cộng: **15 ngôn ngữ**
 - **[SETUP_GUIDE.md](SETUP_GUIDE.md)** - Hướng dẫn setup đầy đủ
 - **[SETUP_PRE_COMMIT.md](SETUP_PRE_COMMIT.md)** - Setup pre-commit hooks
 - **[SETUP_GITLAB_CI.md](SETUP_GITLAB_CI.md)** - Setup GitLab CI/CD
+- **[SETUP_GITHUB_ACTIONS.md](SETUP_GITHUB_ACTIONS.md)** - Setup GitHub Actions
+- **[GITLAB_MERGE_BLOCK_SETUP.md](GITLAB_MERGE_BLOCK_SETUP.md)** - ⚠️ **QUAN TRỌNG**: Cấu hình chặn merge khi thiếu header (GitLab)
 - **[SETUP_IDE.md](SETUP_IDE.md)** - Setup IDE integration
+- **[SETUP_TOGGLE_CHECK.md](SETUP_TOGGLE_CHECK.md)** - Bật/tắt header check
 - **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Xử lý sự cố
 
 ## 🎯 Use Cases

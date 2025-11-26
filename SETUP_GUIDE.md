@@ -189,17 +189,37 @@ chmod +x hooks/install-hooks.sh
 ./hooks/install-hooks.sh
 ```
 
-## Setup GitLab CI/CD
+## Setup CI/CD
+
+### GitLab CI/CD
 
 Xem chi tiết: [SETUP_GITLAB_CI.md](SETUP_GITLAB_CI.md)
 
-### Quick Setup
-
+**Quick Setup**:
 1. Đảm bảo `.gitlab-ci.yml` có trong repository
 2. GitLab Runner đã được cấu hình
 3. Pipeline sẽ tự động chạy khi:
    - Tạo Merge Request
    - Push vào `main`, `master`, `develop`
+
+**Block Merge**: Xem [GITLAB_MERGE_BLOCK_SETUP.md](GITLAB_MERGE_BLOCK_SETUP.md)
+
+### GitHub Actions
+
+Xem chi tiết: [SETUP_GITHUB_ACTIONS.md](SETUP_GITHUB_ACTIONS.md)
+
+**Quick Setup**:
+1. Đảm bảo `.github/workflows/check-headers.yml` có trong repository
+2. GitHub Actions tự động enabled (mặc định)
+3. Workflow sẽ tự động chạy khi:
+   - Tạo Pull Request vào `main`, `master`, `develop`
+   - Push vào `main`, `master`, `develop`
+
+**Block Merge**: 
+- Vào **Settings** > **Branches**
+- Add branch protection rule
+- Enable **"Require status checks to pass before merging"**
+- Add status check: `Check File Headers`
 
 ### Test Local
 
