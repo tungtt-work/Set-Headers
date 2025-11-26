@@ -1,3 +1,20 @@
+# ======================================================================================
+# STRICTLY CONFIDENTIAL | DLP:OMI::STRICT
+# ======================================================================================
+# OWNERSHIP NOTICE:
+# This source code is the proprietary property of [CUSTOMER].
+# Developed by Ominext under MSA.
+#
+# COPYRIGHT (c) 2025 [CUSTOMER]. ALL RIGHTS RESERVED.
+#
+# WARNING: This file contains trade secrets and confidential information.
+# Unauthorized copying or uploading to public networks  is prohibited.
+#
+# Project: [PROJECT_CODE]
+# Trace ID: unique_file_hash
+# ======================================================================================
+
+
 #!/usr/bin/env python3
 """
 Script to enable/disable header check in pre-commit hooks.
